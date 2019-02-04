@@ -1,0 +1,17 @@
+{
+	"name": "weeat.app",
+    "type": "project",
+	"require":{
+		"illuminate/database": "~5.4.0",
+		"php": ">=7.0",
+		"slim/slim": "2.*",
+		"shubhamjain/php-id3" : "dev-master",
+		"james-heinrich/getid3": "^1.9"
+	},
+
+	"autoload":{
+		"psr-4": {
+			"weeat\\" : "src/"
+		}
+	}
+}

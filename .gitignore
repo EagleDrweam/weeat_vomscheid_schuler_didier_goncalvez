@@ -1,0 +1,8 @@
+*.idea
+*.ini
+.project
+bin/
+out/
+conf.ini
+.htaccess
+vendor
