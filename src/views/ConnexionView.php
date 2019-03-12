@@ -14,6 +14,7 @@ class ConnexionView {
 			$formulaire = $formulaire.'<p>Adresse email ou mot de passe incorrectes.</p>';
 		}
 		$formulaire = $formulaire.<<<END
+		
 		<div>
 			<form method="POST" action="$url" id="connexioninscription">
 				<p>
