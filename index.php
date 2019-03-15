@@ -7,6 +7,8 @@ use weeat\controllers\InscriptionControllers;
 use weeat\controllers\ConnexionController;
 use weeat\controllers\AccueilController;
 use weeat\controllers\DeconnexionController;
+use weeat\controllers\ListeRestaurantController;
+use weeat\controllers\NewPostController;
 
 
 $tab = parse_ini_file('src/conf/conf.ini.txt');
@@ -48,5 +50,19 @@ $app->get('/disconnect', function() {
     $cl->deconnecter();
 })->name('Deconnexion');
 
+$app->get('/liste_restaurant', function() {
+    $cl = new ListeRestaurantController();
+    $cl->affiche();
+})->name('ListeRestaurant');
+
+$app->get('/new_post', function() {
+    $cl = new NewPostController();
+    $cl->affiche();
+})->name('post');
+
+$app->post('/addPost', function() {
+    $cl = new NewPostController();
+    $cl->Enregistre();
+})->name('AddPost');
 
 $app->run();

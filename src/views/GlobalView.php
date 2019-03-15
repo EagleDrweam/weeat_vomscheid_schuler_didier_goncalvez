@@ -12,6 +12,7 @@ class GlobalView {
 		$urlConnexion = $app->urlFor('Connexion');
 		$urlInscription = $app->urlFor('Inscription');
 		$urlDeconnexion = $app->urlFor('Deconnexion');
+		$urlRestaurant = $app->urlFor('ListeRestaurant');
 		$html = <<<END
 <!DOCTYPE html>
 <html>
@@ -60,17 +61,21 @@ END;
 		if (isset($_SESSION['user_connected'])) {
 			if ($_SESSION['user_connected']) {
 				$html = $html.<<<END
+
 				<ul class="boutonConnexion">
 					<a href="$urlDeconnexion"><li class="btn btn-danger">Déconnexion</li></a>
+				<ul>
+					<a href="$urlRestaurant"><li class="bouton">Liste des restaurants</li></a>
 				</ul>
 END;
 			}
 		}
 		else{
 			$html = $html.<<<END
-			<ul class="boutonConnexion">
-				<a href="$urlInscription"><li class="btn btn-success">Inscription</li></a>
-				<a href="$urlConnexion"><li class="btn btn-success">Connexion</li></a>	
+			<ul>
+				<a href="$urlInscription"><li class="bouton">Inscription</li></a>
+				<a href="$urlConnexion"><li class="bouton">Connexion</li></a>
+				<a href="$urlRestaurant"><li class="bouton">Liste des restaurants</li></a>	
 			</ul>
 
 END;
