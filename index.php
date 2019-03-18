@@ -69,7 +69,7 @@ $app->post('/addPost', function() {
 })->name('AddPost');
 
 $app->get('/fil_actu', function() {
-    $cl = new NewPostController();
+    $cl = new FilActuController();
     $cl->affiche();
 })->name('filActu');
 

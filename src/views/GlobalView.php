@@ -14,8 +14,8 @@ class GlobalView {
 		$urlDeconnexion = $app->urlFor('Deconnexion');
 		$urlRestaurant = $app->urlFor('ListeRestaurant');
 		$urladdpost = $app->urlFor('post');
-		//$urlProfil = $app->urlFor('profil');
-		
+		$url = $app->urlFor('TryConnexion');
+
 		$html = <<<END
 <!DOCTYPE html>
 <html>
@@ -38,31 +38,21 @@ END;
 		
 
 	
-	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-blue">
   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     		<span class="navbar-toggler-icon"></span>
   		</button>
   		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    		<a class="navbar-brand" id="logo" href="#">W3EAT</a>
     		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       			<li class="nav-item active">
-        			<a class="nav-link" href="$urlAccueil">Accueil <span class="sr-only">(current)</span></a>
+        			<a class="nav-link" href="$urlAccueil"><img src="./web/image/logo1.png" width="auto" height="70px" /> <span class="sr-only">(current)</span></a>
       			</li>
-      			<!-- <li class="nav-item">
-        			<a class="nav-link" href="#">Commander</a>
-      			</li>
-      			<li class="nav-item">
-        			<a class="nav-link" href="#">Profil</a>
-      			</li> -->
     		</ul>
-    		<!-- <form class="form-inline my-2 my-lg-0">
-      			<input class="form-control mr-sm-2" type="search" aria-label="Search">
-      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-    		</form> -->
   		
 END;
 		if (isset($_SESSION['user_connected'])) {
 			if ($_SESSION['user_connected']) {
+
 				$html = $html.<<<END
 
 				<ul class="boutonConnexion">
@@ -75,11 +65,19 @@ END;
 		}
 		else{
 			$html = $html.<<<END
-			<ul>
-				<a href="$urlRestaurant"><li class="btn btn-primary">Liste des restaurants</li></a>	
-				<a href="$urlInscription"><li class="btn btn-light">Inscription</li></a>
-				<a href="$urlConnexion"><li class="btn btn-light">Connexion</li></a>
-			</ul>
+			<div>
+			<form method="POST"  class="form-inline mt-2" action="$url" id="connexioninscription">
+				<p class="white">
+					<label for="email" ></label><input class="form-control" type="email" name="user" id="email" placeholder="Adresse e-mail" required />
+				</p>
+				<p class="white ml-3 mr-3">
+					<label for="mdp"></label><input class="form-control" type="password" name="password" id="mdp" placeholder="Mot de passe" required />
+				</p>
+				<p class="mt-2">
+					<button type="submit" class="btn btn-warning mb-2" name="valider_connexion" value="valid_connexion">Se connecter</button>
+				</p>
+			</form>
+		</div>
 
 END;
 		}
@@ -98,7 +96,7 @@ END;
 	<div class="mt-5"></div>	
 	<footer>
 			
-			    Axel Didier - Gwendolyn VOMSCHEID - Pierre Goncalvez 
+			    <p class="ml-3 mt-2">Axel Didier - Gwendolyn VOMSCHEID - Pierre Goncalvez </p>
 			
 	</footer>
 </body>

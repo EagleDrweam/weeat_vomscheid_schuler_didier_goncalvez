@@ -2,12 +2,12 @@ footer {
 	color: white;
 	font-family: Arial;
 	font-size: 18px;
-	position: fixed;
-	bottom: 0; 
+	position: absolute; 
 	left: 0; 
 	right: 0;
 	background-color: black;
 }
+
 
 .boutonConnexion{
 	float: right;
@@ -22,10 +22,7 @@ footer {
 	background-color: #333333;
 	line-height: 65px;
 }*/
-img{
-	background-color: black;
-	height: 200px;
-}
+
 .accueilContainer{
 	padding: 100px;
 }
@@ -96,4 +93,24 @@ img{
 .menuCat img {
 	height: 100px;
 	width: 150px;
+}
+
+.bg-blue {
+	background-color: #4578ba       !important;
+}
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link{
+	font-size: xx-large;
+}
+
+.white{
+	color: white;
+}
+
+.card-img-top {
+	min-height: 75%;
+	width: auto;
+}
+
+.strong {
+	font-weight: bold;
 }
