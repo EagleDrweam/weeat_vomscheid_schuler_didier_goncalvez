@@ -13,6 +13,9 @@ class GlobalView {
 		$urlInscription = $app->urlFor('Inscription');
 		$urlDeconnexion = $app->urlFor('Deconnexion');
 		$urlRestaurant = $app->urlFor('ListeRestaurant');
+		$urladdpost = $app->urlFor('post');
+		//$urlProfil = $app->urlFor('profil');
+		
 		$html = <<<END
 <!DOCTYPE html>
 <html>
@@ -40,22 +43,22 @@ END;
     		<span class="navbar-toggler-icon"></span>
   		</button>
   		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    		<a class="navbar-brand" id="logo" href="#">WEEAT</a>
+    		<a class="navbar-brand" id="logo" href="#">W3EAT</a>
     		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       			<li class="nav-item active">
-        			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        			<a class="nav-link" href="$urlAccueil">Accueil <span class="sr-only">(current)</span></a>
       			</li>
-      			<li class="nav-item">
+      			<!-- <li class="nav-item">
         			<a class="nav-link" href="#">Commander</a>
       			</li>
       			<li class="nav-item">
         			<a class="nav-link" href="#">Profil</a>
-      			</li>
+      			</li> -->
     		</ul>
-    		<form class="form-inline my-2 my-lg-0">
-      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    		</form>
+    		<!-- <form class="form-inline my-2 my-lg-0">
+      			<input class="form-control mr-sm-2" type="search" aria-label="Search">
+      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+    		</form> -->
   		
 END;
 		if (isset($_SESSION['user_connected'])) {
@@ -63,9 +66,9 @@ END;
 				$html = $html.<<<END
 
 				<ul class="boutonConnexion">
+					<a href="$urladdpost"><li class="btn btn-primary">Poster une photo/vidéo</li></a> 
+					<a href="$urlRestaurant"><li class="btn btn-light">Liste des restaurants</li></a>
 					<a href="$urlDeconnexion"><li class="btn btn-danger">Déconnexion</li></a>
-				<ul>
-					<a href="$urlRestaurant"><li class="bouton">Liste des restaurants</li></a>
 				</ul>
 END;
 			}
@@ -73,9 +76,9 @@ END;
 		else{
 			$html = $html.<<<END
 			<ul>
-				<a href="$urlInscription"><li class="bouton">Inscription</li></a>
-				<a href="$urlConnexion"><li class="bouton">Connexion</li></a>
-				<a href="$urlRestaurant"><li class="bouton">Liste des restaurants</li></a>	
+				<a href="$urlRestaurant"><li class="btn btn-primary">Liste des restaurants</li></a>	
+				<a href="$urlInscription"><li class="btn btn-light">Inscription</li></a>
+				<a href="$urlConnexion"><li class="btn btn-light">Connexion</li></a>
 			</ul>
 
 END;
@@ -92,10 +95,10 @@ END;
 	
 	public static function footer() {
 		$html=<<<END
-		
+	<div class="mt-5"></div>	
 	<footer>
 			
-			    Axel Didier - Gwendolyn VOMSCHEID - Pierre Goncalvez - Benoît Schuler
+			    Axel Didier - Gwendolyn VOMSCHEID - Pierre Goncalvez 
 			
 	</footer>
 </body>

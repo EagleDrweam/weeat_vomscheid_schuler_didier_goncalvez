@@ -1,3 +1,14 @@
+footer {
+	color: white;
+	font-family: Arial;
+	font-size: 18px;
+	position: fixed;
+	bottom: 0; 
+	left: 0; 
+	right: 0;
+	background-color: black;
+}
+
 .boutonConnexion{
 	float: right;
 	margin:0;
@@ -67,18 +78,22 @@ body{
 	background-color: white;
 	/*font-family: 'Montserrat', sans-serif;*/
 }
-footer{
-	color: white;
-  	right: 0;
-  	bottom: 0;
-  	left: 0;
-  	padding: 1rem;
-  	background-color: #212529;
-  	text-align: center;
-}
+
 img{
 
 }
 #defilant{
 	width: 800px;
+}
+
+.menuCat {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-bottom : 1%;
+	padding-top: 1%;
+}
+
+.menuCat img {
+	height: 100px;
+	width: 150px;
 }

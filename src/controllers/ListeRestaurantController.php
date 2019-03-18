@@ -8,9 +8,14 @@ use weeat\views\ListeRestaurantView;
 class ListeRestaurantController {
 
 	public function affiche(){
-
 		$aff = new ListeRestaurantView();
-		echo $aff->render();
+
+		if(isset($_GET["id"])){
+			echo $aff->render2($_GET["id"]);
+		}else{
+			echo $aff->render();
+		}
+
 	}
 
 }

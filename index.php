@@ -9,6 +9,7 @@ use weeat\controllers\AccueilController;
 use weeat\controllers\DeconnexionController;
 use weeat\controllers\ListeRestaurantController;
 use weeat\controllers\NewPostController;
+use weeat\controllers\FilActuController;
 
 
 $tab = parse_ini_file('src/conf/conf.ini.txt');
@@ -55,6 +56,8 @@ $app->get('/liste_restaurant', function() {
     $cl->affiche();
 })->name('ListeRestaurant');
 
+
+
 $app->get('/new_post', function() {
     $cl = new NewPostController();
     $cl->affiche();
@@ -64,5 +67,10 @@ $app->post('/addPost', function() {
     $cl = new NewPostController();
     $cl->Enregistre();
 })->name('AddPost');
+
+$app->get('/fil_actu', function() {
+    $cl = new NewPostController();
+    $cl->affiche();
+})->name('filActu');
 
 $app->run();
