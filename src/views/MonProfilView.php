@@ -6,24 +6,20 @@ use weeat\views\GlobalView;
 use weeat\models\Post;
 
 
-class FilActuView {
+class MonProfilView {
 
 	public function render() {
 
 		$html = GlobalView::header();
 		$app=\Slim\Slim::getInstance();
-    $urladdpost = $app->urlFor('post');
-    $urlmonprofil = $app->urlFor('MonProfil');
-    $posts = Post::All()->sortByDesc('dateCrea');
+		$urladdpost = $app->urlFor('post');
+	    $posts = Post::where('id_utilisateur', '=', $_SESSION['user_connected']['user_id'])->get();
 
+	    $html = $html . <<<END
 
-    $html = $html . <<<END
-    
-    <h1 class="text-center  mt-5">Fil d'actualité</h1><br>
-    <p class="text-center"><a href="$urladdpost" class="btn btn-warning">Poster une photo</a></p>
-    <p class="text-center"><a href="$urlmonprofil" class="btn btn-danger">Mon profil</a></p>
+	    <p class="text-center mt-5"><a href="$urladdpost" class="btn btn-warning">Poster une photo</a></p>
 
-    <div class="container">
+	    <div class="container">
       <div class="row">
 END;
 
@@ -46,5 +42,6 @@ END;
 		$html = $html . GlobalView::footer();
 		return $html;
 	}
-	
+
 }
+

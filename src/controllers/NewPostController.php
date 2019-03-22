@@ -34,6 +34,7 @@ class NewPostController
 		$post->Nom = filter_var($name, FILTER_SANITIZE_STRING);
 		$post->extension = filter_var($extension_upload, FILTER_SANITIZE_STRING);
 		$post->titre = filter_var($_POST["titre"], FILTER_SANITIZE_STRING);
+		$post->hastag = filter_var($_POST["hastag"], FILTER_SANITIZE_STRING);
 		$post->Commentaire = filter_var($_POST["description"], FILTER_SANITIZE_STRING);
 		$post->id_utilisateur = $_SESSION['user_connected']["user_id"];
 

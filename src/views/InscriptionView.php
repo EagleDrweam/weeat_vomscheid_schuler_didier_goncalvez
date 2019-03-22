@@ -66,7 +66,7 @@ class InscriptionView {
 				</div>
 				<div class="col-md-6">
 				<p>
-					<label for="mdp2">Confirmez le mot de passe : </label><input type="password" name="password2" id="mdp2" class="form-control" placeholder="Mot de passe" required minlength="8"/>
+					<label for="mdp2">Confirmez le mot de passe : </label><input type="password" name="password2" id="mdp2" class="form-control" nblur="checkMdp()" placeholder="Mot de passe" required minlength="8"/>
 				</p>
 				</div>
 				<div class="col-md-6">

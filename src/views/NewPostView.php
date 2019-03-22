@@ -13,6 +13,7 @@ class NewPostView
 	{
  		$app = \Slim\Slim::getInstance();
  		$html = GlobalView::header();
+          $urlretour = $app->urlFor('filActu');
 		$url = $app->urlFor('AddPost');
 		$html = $html . <<<END
   			<div class="form-group text-center">
@@ -29,15 +30,23 @@ class NewPostView
 
      <textarea name="description" id="description"></textarea><br />
 
+
+     <label for="hastag" class="font-weight-bold">Mettez vos hastag (#exemple) :</label><br />
+
+     <input type="text" name="hastag" id="hastag" /><br />
+
+
      <label for="mon_fichier"  class="font-weight-bold mt-3">Fichier (Tout formats d'images ou de vidéos) :</label><br />
 
      <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
 
      <input type="file" name="mon_fichier" id="mon_fichier" /><br />
 
-     <input type="submit" class="btn btn-success mb-5 mt-3" name="submit" value="Envoyer" />
+     <input type="submit" class="btn btn-success mb-5 mt-5" name="submit" value="Envoyer" />
 
 </form>
+     
+     <a href="$urlretour">Retour</a>
 
 
 END;

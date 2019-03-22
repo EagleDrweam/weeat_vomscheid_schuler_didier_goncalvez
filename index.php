@@ -10,6 +10,7 @@ use weeat\controllers\DeconnexionController;
 use weeat\controllers\ListeRestaurantController;
 use weeat\controllers\NewPostController;
 use weeat\controllers\FilActuController;
+use weeat\controllers\MonProfilController;
 
 
 $tab = parse_ini_file('src/conf/conf.ini.txt');
@@ -21,10 +22,18 @@ $db->bootEloquent();
 $app = new \Slim\Slim();
 session_start();
 
+if (isset($_SESSION['user_connected'])) {
+			if ($_SESSION['user_connected']) {
+				$app->get('/', function() {
+			    $cl = new FilActuController();
+			    $cl->affiche();
+			})->name('filActu');
+			}
+		}
 $app->get('/', function() {
-	$ac = new AccueilController();
-	$ac->affiche();
-})->name('Accueil');
+					$ac = new AccueilController();
+					$ac->affiche();
+				})->name('Accueil');
 
 $app->get('/inscription', function() {
     $cl = new InscriptionControllers();
@@ -68,9 +77,10 @@ $app->post('/addPost', function() {
     $cl->Enregistre();
 })->name('AddPost');
 
-$app->get('/fil_actu', function() {
-    $cl = new FilActuController();
+$app->get('/mon_profil', function() {
+    $cl = new MonProfilController();
     $cl->affiche();
-})->name('filActu');
+})->name('MonProfil');
+
 
 $app->run();

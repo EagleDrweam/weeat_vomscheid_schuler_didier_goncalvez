@@ -16,7 +16,7 @@ class ConnexionController {
 			$app->redirect($app->urlFor('Accueil'));
 		}
 		else {
-			$app->redirect($app->urlFor('Connexion').'?err=1');
+			$app->redirect($app->urlFor('Accueil').'?err=1');
 		}
 	}
 	
