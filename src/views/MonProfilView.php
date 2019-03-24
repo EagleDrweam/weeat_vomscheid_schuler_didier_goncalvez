@@ -13,11 +13,28 @@ class MonProfilView {
 		$html = GlobalView::header();
 		$app=\Slim\Slim::getInstance();
 		$urladdpost = $app->urlFor('post');
-	    $posts = Post::where('id_utilisateur', '=', $_SESSION['user_connected']['user_id'])->get();
+    $urlparam = $app->urlFor('modifier');
+    $urlfav = $app->urlFor('Favori');
+	  $posts = Post::where('id_utilisateur', '=', $_SESSION['user_connected']['user_id'])->get();
 
 	    $html = $html . <<<END
+      <h1 class="text-center mt-5">Flux de mes dernières photos</h1>
 
-	    <p class="text-center mt-5"><a href="$urladdpost" class="btn btn-warning">Poster une photo</a></p>
+      <div class="container mb-5">
+      <div class="row">
+      <div class="col-sm-3"></div>
+        <div class="col-sm-2">
+	         <p class="text-center mt-5"><a href="$urladdpost" class="btn btn-warning">Poster une photo</a></p>
+        </div>
+        <div class="col-sm-2">
+          <p class="text-center mt-5"><a href="$urlfav" class="btn btn-danger">Mes favoris</a></p>
+        </div>
+        <div class="col-sm-2"> 
+          <p class="text-center mt-5"><a href="$urlparam" class="btn btn-light">Mes paramètres</a></p>
+        </div>
+        <div class="col-sm-2"></div>
+        </div>
+        </div>
 
 	    <div class="container">
       <div class="row">

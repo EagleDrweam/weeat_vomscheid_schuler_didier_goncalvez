@@ -14,7 +14,11 @@ class GlobalView {
 		$urlDeconnexion = $app->urlFor('Deconnexion');
 		$urlRestaurant = $app->urlFor('ListeRestaurant');
 		$urladdpost = $app->urlFor('post');
+		$urlflux = $app->urlFor('MonProfil');
+		$urlfav = $app->urlFor('Favori');
+		$urlparam = $app->urlFor('modifier');
 		$url = $app->urlFor('TryConnexion');
+		$urlpanier = $app->urlFor('Panier');
 		$html2 = "";
 		if (isset($_GET['err']) && $_GET['err'] == 1) {
 		      ;
@@ -51,6 +55,32 @@ END;
       			<li class="nav-item active">
         			<a class="nav-link" href="$urlAccueil"><img src="./web/image/logo1.png" width="auto" height="70px" /> <span class="sr-only">(current)</span></a>
       			</li>
+END;
+
+	if (isset($_SESSION['user_connected'])) {
+			if ($_SESSION['user_connected']) {
+
+				$html = $html.<<<END
+
+				<li class="nav-item mt-4"><a href="$urlAccueil"><button class="btn btn-warning">Accueil</button></a></li>
+				<li class="nav-item mt-3 ml-1">
+				<div class="dropdown mt-2">
+					  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Mon compte
+					  </button>
+					  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+					    <a href="$urlflux"><button class="dropdown-item" type="button">Mon flux</button></a>
+					    <a href="$urlfav"><button class="dropdown-item" type="button">Mes favoris</button></a>
+					    <a href="$urlparam"><button class="dropdown-item" type="button">Mes paramètres</button></a>
+					    <a href="$urlDeconnexion"><button class="dropdown-item" type="button">Déconnexion</li></button></a>
+					  </div>
+					</div>
+				</li>
+END;
+}
+}
+
+		$html = $html.<<<END
     		</ul>
   		
 END;
@@ -62,7 +92,8 @@ END;
 				<ul class="boutonConnexion">
 					<a href="$urladdpost"><li class="btn btn-warning">Poster une photo</li></a> 
 					<a href="$urlRestaurant"><li class="btn btn-light">Liste des restaurants</li></a>
-					<a href="$urlDeconnexion"><li class="btn btn-danger">Déconnexion</li></a>
+					<a href="$urlpanier"><li class="btn btn-danger">Mon panier</li></a>
+					
 				</ul>
 END;
 			}

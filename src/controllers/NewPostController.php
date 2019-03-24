@@ -30,7 +30,6 @@ class NewPostController
 		$resultat = move_uploaded_file($_FILES['mon_fichier']['tmp_name'],$nom);
 
 		$post = new Post();
-		$post->id_Post = filter_var($name, FILTER_SANITIZE_STRING);
 		$post->Nom = filter_var($name, FILTER_SANITIZE_STRING);
 		$post->extension = filter_var($extension_upload, FILTER_SANITIZE_STRING);
 		$post->titre = filter_var($_POST["titre"], FILTER_SANITIZE_STRING);

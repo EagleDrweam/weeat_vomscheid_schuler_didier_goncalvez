@@ -12,6 +12,7 @@ class ListeRestaurantView {
 		$html = GlobalView::header();
 		$app=\Slim\Slim::getInstance();
 		$url = $app->urlFor('ListeRestaurant');
+		$urlPlat = $app->urlFor('ListePlat');
 		$restos = Restaurant::all();
 
 
@@ -35,6 +36,9 @@ class ListeRestaurantView {
 			<h2 class='text-center'>Je choisis une catégorie de restaurant :</h2><br /> 
 			<div class="container">
 			  <div class="row">
+			  	<div class="col-sm">
+			      <a href="$url"><img src='./web/image/tr.jpg' /></a>
+			    </div>
 			    <div class="col-sm">
 			      <a href="$url?id=Fast food"><img src='./web/image/resto-burger.jpg' /></a>
 			    </div>
@@ -64,13 +68,14 @@ END;
 
 	 	foreach($restos as $resto){
 	 		$html = $html . "<div class='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
+	 						<a href='$urlPlat?id=$resto->id_restaurant' id='a'>
 		    				   <div class='card'>
 		    				   	<img src='./web/image/restaurant/" . $resto->photo_restaurant . "' class='card-img-top' alt='...'>
   			  					 <div class='card-body'>
       								<p class='card-text-nom'>" . $resto->nom_restaurant . "</p>
       								<p class='card-text-categorie'>" . $resto->categorie_restaurant . "</p>
       							 </div>
-      						   </div>
+      						   </div></a>
       						</div>";
 	 	}
 
@@ -88,6 +93,7 @@ END;
 		$html = GlobalView::header();
 		$app=\Slim\Slim::getInstance();
 		$url = $app->urlFor('ListeRestaurant');
+		$urlPlat = $app->urlFor('ListePlat');
 		$restos = Restaurant::select('*')->where('categorie_restaurant', $cat)->get();
 
 
@@ -110,6 +116,9 @@ END;
 			<h2 class='text-center'>Je choisis une catégorie de restaurant :</h2><br /> 
 			<div class="container">
 			  <div class="row">
+			  	<div class="col-sm">
+			      <a href="$url"><img src='./web/image/tr.jpg' /></a>
+			    </div>
 			    <div class="col-sm">
 			      <a href="$url?id=Fast food"><img src='./web/image/resto-burger.jpg' /></a>
 			    </div>
@@ -139,6 +148,7 @@ END;
 
 	 	foreach($restos as $resto){
 	 		$html = $html . "<div class='col-xs-12 col-sm-12 col-md-6 col-lg-4'>
+	 						<a href='$urlPlat?id=$resto->id_restaurant' id='a'>
 		    				   <div class='card'>
 		    				   	<img src='./web/image/restaurant/" . $resto->photo_restaurant . "' class='card-img-top' alt='...'>
   			  					 <div class='card-body'>
@@ -146,6 +156,7 @@ END;
       								<p class='card-text-categorie'>" . $resto->categorie_restaurant . "</p>
       							 </div>
       						   </div>
+      						   </a>
       						</div>";
 	 	}
 		
